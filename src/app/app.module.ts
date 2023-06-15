@@ -22,6 +22,7 @@ import {
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SessionListComponent } from './events/event-details/session-list.component';
+import { CollabsibleWellComponent } from './common/collabsible-well/collabsible-well.component';
 
 
 @NgModule({
@@ -35,6 +36,8 @@ import { SessionListComponent } from './events/event-details/session-list.compon
     Error404Component,
     CreateSessionComponent,
     EventDetailsComponent,
+    CollabsibleWellComponent,
+    SessionListComponent,
   ],
   imports: [
     BrowserModule,
