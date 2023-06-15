@@ -18,10 +18,11 @@ import {
   EventRouteActivator,
   CreateSessionComponent,
   EventDetailsComponent,
+  DurationPipe,
 } from './events/index'
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SessionListComponent } from './events/event-details/session-list.component';
+import { SessionListComponent } from './events/event-details/session-list/session-list.component';
 import { CollabsibleWellComponent } from './common/collabsible-well/collabsible-well.component';
 
 
@@ -38,6 +39,7 @@ import { CollabsibleWellComponent } from './common/collabsible-well/collabsible-
     EventDetailsComponent,
     CollabsibleWellComponent,
     SessionListComponent,
+    DurationPipe,
   ],
   imports: [
     BrowserModule,
