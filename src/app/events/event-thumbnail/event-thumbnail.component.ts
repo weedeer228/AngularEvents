@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { IEvent } from "./shared";
+import { IEvent } from "../shared";
 
 @Component({
   selector: 'event-thumbnail',

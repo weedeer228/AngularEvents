@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CollabsibleWellComponent {
   @Input() title!: string;
-  visible!: boolean;
+  visible: boolean = false;
 
   toggleContent() {
     this.visible = !this.visible;
