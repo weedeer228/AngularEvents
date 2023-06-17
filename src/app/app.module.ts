@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './nav/navbar/navbar.component';
 import { EventService } from './events/shared/event.services';
-import { ToastrService } from './common/toastr.service';
+import { TOASTR_TOKEN,Toastr } from './common/toastr.service';
 import { appRoutes } from './routes';
 import { CreateEventComponent } from './events/create-event/create-event.component';
 import { Error404Component } from './errors/404/404.component';
@@ -25,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SessionListComponent } from './events/event-details/session-list/session-list.component';
 import { CollabsibleWellComponent } from './common/collabsible-well/collabsible-well.component';
 
+declare let toastr: Toastr;
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { CollabsibleWellComponent } from './common/collabsible-well/collabsible-
   ],
   providers: [
     EventService,
-    ToastrService,
+
     AuthService,
     EventListResolver,
     EventRouteActivator,
@@ -58,6 +59,10 @@ import { CollabsibleWellComponent } from './common/collabsible-well/collabsible-
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
+    },
+    {
+      provide:TOASTR_TOKEN,
+      useValue:toastr
     },
   ],
 
