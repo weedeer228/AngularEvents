@@ -23,6 +23,7 @@ import {
   VoterService,
 } from './events/index'
 import { AuthService } from './user/auth.service';
+import {HttpClientModule} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SessionListComponent } from './events/event-details/session-list/session-list.component';
 import {
@@ -61,6 +62,7 @@ declare let jQuery: any;
     RouterModule.forRoot(appRoutes),
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [
     EventService,

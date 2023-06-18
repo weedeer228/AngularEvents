@@ -11,8 +11,8 @@ export class EventListResolver implements Resolve<any>{
 
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return this.eventService.getEvents().pipe(map(events => events))
+  resolve() {
+    return this.eventService.getEvents();
   }
 
 }

@@ -1,13 +1,24 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, catchError, of } from 'rxjs';
 import { IEvent, ISession } from './event.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class EventService {
+
+  constructor(private client: HttpClient) { }
+
+  private handleError<T>(operation: string = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.log(error);
+      return of(result as T);
+    }
+  }
+
   getEvents(): Observable<IEvent[]> {
-    let subject = new Subject<IEvent[]>()
-    setTimeout(() => { subject.next(EVENTS); subject.complete(); }, 100)
-    return subject;
+    return this.client.get<IEvent[]>('/api/events')
+      .pipe(catchError(this.handleError<IEvent[]>('getEvents', EVENTS)));
+
   }
 
   getEvent(id: number): IEvent | undefined {
@@ -34,14 +45,14 @@ export class EventService {
       matchingSessions = matchingSessions.map((session: any) => {
         session.eventId = e.id;
         return session;
-      })
+      });
       results = results.concat(matchingSessions);
     });
-      var emitter = new EventEmitter(true);
-      setTimeout(()=>{
-        emitter.emit(results);
-      },100);
-      return emitter;
+    var emitter = new EventEmitter(true);
+    setTimeout(() => {
+      emitter.emit(results);
+    }, 100);
+    return emitter;
   }
 
 }
