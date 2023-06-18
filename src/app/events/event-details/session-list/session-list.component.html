@@ -1,4 +1,5 @@
 <div class="row" *ngFor="let session of visibleSessions">
+
   <div class="col-md-10">
     <collabsible-well [title]="session.name">
       <div well-title>
@@ -13,5 +14,11 @@
         <p>{{session.abstract}}</p>
       </div>
     </collabsible-well>
+  </div>
+  <div class="col-md-1">
+    <div *ngIf="authService.isAuthenticated()">
+      <upvote (vote)="toggleVote(session)" [count]="session.voters.length"
+        [voted]="userHasVoted(session,authService.currentUser.userName)"></upvote>
+    </div>
   </div>
 </div>
