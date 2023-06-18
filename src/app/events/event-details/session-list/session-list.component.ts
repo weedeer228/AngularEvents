@@ -18,8 +18,10 @@ export class SessionListComponent implements OnChanges {
   }
 
   sortByNameAsc(firsrSession: ISession, secondSession: ISession) {
-    if (firsrSession.name > secondSession.name) return 1;
-    if(firsrSession.name > secondSession.name) return 0;
+    if (firsrSession.name > secondSession.name)
+      return 1;
+    if (firsrSession.name === secondSession.name)
+      return 0;
     return -1;
   }
 
@@ -30,6 +32,6 @@ export class SessionListComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (!this.sessions) return;
     this.filterSessions(this.filterBy)
-    this.sortBy === 'name' ? this.visibleSessions.sort(this.sortByNameAsc) : this.sessions.sort(this.sortByVotesDesc);
+    this.sortBy === 'name' ? this.visibleSessions.sort(this.sortByNameAsc) : this.visibleSessions.sort(this.sortByVotesDesc);
   }
 }

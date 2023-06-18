@@ -29,8 +29,8 @@
     </div>
     <div class="col-md-7">
       <div class="btn-group btn-group-sm pad-left">
-        <button class="btn btn-default" [class.active]="sortBy==='name'">Name</button>
-        <button class="btn btn-default" [class.active]="sortBy==='votes'">Votes</button>
+        <button class="btn btn-default" [class.active]="sortBy==='name'" (click)="sortBy='name'">Name</button>
+        <button class="btn btn-default pad-left" [class.active]="sortBy==='votes'" (click)="sortBy='votes'">Votes</button>
       </div>
       <div class="btn-group btn-group-sm pad-left">
 
@@ -42,7 +42,6 @@
         <button class="btn btn-default" [class.active]="filterBy==='advanced'"
           (click)="filterBy='advanced'">Advanced</button>
       </div>
-      https://app.pluralsight.com/course-player?clipId=20b6e0b5-38ea-443d-a4be-56fce6f7905c
       <div class="col-md-2">
         <a (click)="addSession()">Add Session</a>
       </div>

@@ -26,22 +26,30 @@
         </li>
       </ul>
       <div class="navbar-header navbar-right">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-Snav">
           <li>
-            <a [routerLink]="['user/login']" *ngIf="!authService.isAuthenticated()">Login</a>
-            <a [routerLink]="['user/profile']" *ngIf="authService.isAuthenticated()">Welcome
-              {{authService.currentUser.firstName}}</a>
+            <a [routerLink]="['user/login']" *ngIf="!auth.isAuthenticated()">Login</a>
+            <a [routerLink]="['user/profile']" *ngIf="auth.isAuthenticated()">Welcome
+              {{auth.currentUser.firstName}}</a>
           </li>
         </ul>
       </div>
-      <form id="searchForm" class="navbar-form navbar-right">
+      <form id="searchForm" (ngSubmit)="searchSessions(searchTerm)" class="navbar-form navbar-right">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search Sessions">
+          <input [(ngModel)]="searchTerm" name="searchTerm" type="text" class="form-control"
+            placeholder="Search Sessions">
+          <button class="btn btn-default pad-left" modal-trigger="searchResults">
+            Search
+          </button>
         </div>
-        <button class="btn btn-default">
-          Search
-        </button>
       </form>
     </div>
   </div>
 </div>
+
+<simple-modal id="searchResults" role="dialog" area-hidden="true" z-index="9999" elementId="searchResults" title="Matching Sessions">
+  <div class="list-group" z-index="9999">
+    <a class="list-group-item" z-index="9999" *ngFor="let session of foundSessions"
+      [routerLink]="['/events', session.id]">{{session.name}}</a>
+  </div>
+</simple-modal>

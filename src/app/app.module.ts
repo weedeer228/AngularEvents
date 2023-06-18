@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './nav/navbar/navbar.component';
 import { EventService } from './events/shared/event.services';
-import { TOASTR_TOKEN,Toastr } from './common/toastr.service';
+import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
 import { appRoutes } from './routes';
 import { CreateEventComponent } from './events/create-event/create-event.component';
 import { Error404Component } from './errors/404/404.component';
@@ -23,10 +23,16 @@ import {
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SessionListComponent } from './events/event-details/session-list/session-list.component';
-import { CollabsibleWellComponent } from './common/collabsible-well/collabsible-well.component';
+import {
+  CollabsibleWellComponent,
+  JQ_TOKEN,
+  SimpleModalComponent,
+  ModalTriggerDirective,
+} from './common/index';
+
 
 declare let toastr: Toastr;
-
+declare let jQuery: any;
 @NgModule({
   declarations: [
     SessionListComponent,
@@ -40,6 +46,8 @@ declare let toastr: Toastr;
     EventDetailsComponent,
     CollabsibleWellComponent,
     SessionListComponent,
+    SimpleModalComponent,
+    ModalTriggerDirective,
     DurationPipe,
   ],
   imports: [
@@ -61,9 +69,13 @@ declare let toastr: Toastr;
       useValue: checkDirtyState
     },
     {
-      provide:TOASTR_TOKEN,
-      useValue:toastr
+      provide: TOASTR_TOKEN,
+      useValue: toastr
     },
+    {
+      provide: JQ_TOKEN,
+      useValue: jQuery
+    }
   ],
 
   bootstrap: [EventsAppComponent]
