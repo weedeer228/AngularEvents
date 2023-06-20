@@ -21,9 +21,9 @@ export class EventService {
 
   }
 
-  getEvent(id: number): IEvent | undefined {
-    return EVENTS.find(e => e.id == id);
-
+  getEvent(id: number): Observable<IEvent> | undefined {
+    return this.client.get<IEvent>('/api/events/' + id)
+      .pipe(catchError(this.handleError<IEvent>('getEvent')));
   }
 
   saveEvent(event: any) {

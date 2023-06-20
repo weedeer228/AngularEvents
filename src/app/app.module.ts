@@ -15,15 +15,15 @@ import {
   EventThumbnailComponent,
   EventListComponent,
   EventListResolver,
-  EventRouteActivator,
   CreateSessionComponent,
   EventDetailsComponent,
   DurationPipe,
   UpvoteComponent,
   VoterService,
+  EventResolver,
 } from './events/index'
 import { AuthService } from './user/auth.service';
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SessionListComponent } from './events/event-details/session-list/session-list.component';
 import {
@@ -69,7 +69,7 @@ declare let jQuery: any;
     VoterService,
     AuthService,
     EventListResolver,
-    EventRouteActivator,
+    EventResolver,
 
     {
       provide: 'canDeactivateCreateEvent',
